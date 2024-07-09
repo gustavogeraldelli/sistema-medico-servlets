@@ -15,7 +15,7 @@ public enum TipoUsuario {
         return tipo;
     }
 
-    public static TipoUsuario getTipoUsuario(int tipo) {
+    public static TipoUsuario fromTipo(int tipo) {
         for (TipoUsuario t : TipoUsuario.values())
             if (t.getTipo() == tipo)
                 return t;
