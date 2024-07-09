@@ -13,4 +13,11 @@ public enum Sexo {
     public char getLetra() {
         return letra;
     }
+
+    public static Sexo fromLetra(char letra) {
+        for (Sexo s : Sexo.values())
+            if (s.getLetra() == letra)
+                return s;
+        return null;
+    }
 }

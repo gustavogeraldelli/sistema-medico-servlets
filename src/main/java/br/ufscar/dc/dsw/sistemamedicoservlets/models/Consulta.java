@@ -12,6 +12,10 @@ public class Consulta {
     public Consulta() {
     }
 
+    public Consulta(LocalDateTime dataConsulta) {
+        this.dataConsulta = dataConsulta;
+    }
+
     public Consulta(Medico medico, Paciente paciente, LocalDateTime dataConsulta) {
         this.medico = medico;
         this.paciente = paciente;

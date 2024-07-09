@@ -17,6 +17,14 @@ public class Paciente {
     public Paciente() {
     }
 
+    public Paciente(String cpf, String nome, String telefone, Sexo sexo, LocalDate dataNascimento) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.sexo = sexo;
+        this.dataNascimento = dataNascimento;
+    }
+
     public Paciente(Usuario usuario, String cpf, String nome, String telefone, Sexo sexo, LocalDate dataNascimento) {
         this.usuario = usuario;
         this.cpf = cpf;

@@ -11,6 +11,12 @@ public class Medico {
     public Medico() {
     }
 
+    public Medico(String crm, String nome, String especialidade) {
+        this.crm = crm;
+        this.nome = nome;
+        this.especialidade = especialidade;
+    }
+
     public Medico(Usuario usuario, String crm, String nome, String especialidade) {
         this.usuario = usuario;
         this.crm = crm;

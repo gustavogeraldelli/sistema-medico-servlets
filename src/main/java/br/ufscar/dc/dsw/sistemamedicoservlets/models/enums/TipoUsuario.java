@@ -14,4 +14,11 @@ public enum TipoUsuario {
     public int getTipo() {
         return tipo;
     }
+
+    public static TipoUsuario getTipoUsuario(int tipo) {
+        for (TipoUsuario t : TipoUsuario.values())
+            if (t.getTipo() == tipo)
+                return t;
+        return null;
+    }
 }
