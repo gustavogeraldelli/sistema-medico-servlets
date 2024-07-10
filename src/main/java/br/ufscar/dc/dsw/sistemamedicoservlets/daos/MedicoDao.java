@@ -213,12 +213,13 @@ public class MedicoDao extends DAO {
     }
 
     private Medico instanciarMedico(ResultSet rs) throws SQLException {
-        Medico m = new Medico(
+        UsuarioDao usuarioDao = new UsuarioDao();
+        return new Medico(
+                rs.getInt("id"),
+                usuarioDao.findById(rs.getInt("id_usuario")),
                 rs.getString("crm"),
                 rs.getString("nome"),
                 rs.getString("especialidade"));
-        m.setId(rs.getInt("id"));
-        return m;
     }
 
     public List<String> findDistinctEspecialidade() {

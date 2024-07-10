@@ -242,9 +242,12 @@ public class ConsultaDao extends DAO {
     }
 
     private Consulta instanciarConsulta(ResultSet rs) throws SQLException {
-        Consulta c = new Consulta(
+        MedicoDao medicoDao = new MedicoDao();
+        PacienteDao pacienteDao = new PacienteDao();
+        return new Consulta(
+                rs.getInt("id"),
+                medicoDao.findById(rs.getInt("id_medico")),
+                pacienteDao.findById(rs.getInt("id_paciente")),
                 rs.getTimestamp("data_hora").toLocalDateTime());
-        c.setId(rs.getInt("id"));
-        return c;
     }
 }

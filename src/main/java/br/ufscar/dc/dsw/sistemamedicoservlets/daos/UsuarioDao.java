@@ -130,12 +130,10 @@ public class UsuarioDao extends DAO {
     }
 
     private Usuario instanciarUsuario(ResultSet rs) throws SQLException {
-        Usuario u = new Usuario(
+        return new Usuario(
+                rs.getInt("id"),
                 rs.getString("email"),
                 rs.getString("senha"),
-                TipoUsuario.fromTipo(rs.getInt("tipo"))
-        );
-        u.setId(rs.getInt("id"));
-        return u;
+                TipoUsuario.fromTipo(rs.getInt("tipo")));
     }
 }

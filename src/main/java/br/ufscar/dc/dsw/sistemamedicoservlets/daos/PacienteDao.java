@@ -192,13 +192,14 @@ public class PacienteDao extends DAO {
     }
 
     private Paciente instanciarPaciente(ResultSet rs) throws SQLException {
-        Paciente p = new Paciente(
+        UsuarioDao usuarioDao = new UsuarioDao();
+        return new Paciente(
+                rs.getInt("id"),
+                usuarioDao.findById(rs.getInt("id_usuario")),
                 rs.getString("cpf"),
                 rs.getString("nome"),
                 rs.getString("telefone"),
                 Sexo.fromLetra(rs.getString("sexo").charAt(0)),
                 rs.getDate("data_nasc").toLocalDate());
-        p.setId(rs.getInt("id"));
-        return p;
     }
 }

@@ -17,7 +17,8 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(String cpf, String nome, String telefone, Sexo sexo, LocalDate dataNascimento) {
+    public Paciente(Usuario usuario, String cpf, String nome, String telefone, Sexo sexo, LocalDate dataNascimento) {
+        this.usuario = usuario;
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
@@ -25,7 +26,8 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
     }
 
-    public Paciente(Usuario usuario, String cpf, String nome, String telefone, Sexo sexo, LocalDate dataNascimento) {
+    public Paciente(int id, Usuario usuario, String cpf, String nome, String telefone, Sexo sexo, LocalDate dataNascimento) {
+        this.id = id;
         this.usuario = usuario;
         this.cpf = cpf;
         this.nome = nome;

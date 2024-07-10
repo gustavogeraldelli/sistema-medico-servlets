@@ -12,11 +12,14 @@ public class Consulta {
     public Consulta() {
     }
 
-    public Consulta(LocalDateTime dataConsulta) {
+    public Consulta(Medico medico, Paciente paciente, LocalDateTime dataConsulta) {
+        this.medico = medico;
+        this.paciente = paciente;
         this.dataConsulta = dataConsulta;
     }
 
-    public Consulta(Medico medico, Paciente paciente, LocalDateTime dataConsulta) {
+    public Consulta(int id, Medico medico, Paciente paciente, LocalDateTime dataConsulta) {
+        this.id = id;
         this.medico = medico;
         this.paciente = paciente;
         this.dataConsulta = dataConsulta;

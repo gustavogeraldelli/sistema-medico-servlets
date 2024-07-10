@@ -18,6 +18,13 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public Usuario(int id, String email, String senha, TipoUsuario tipoUsuario) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+        this.tipoUsuario = tipoUsuario;
+    }
+
     public int getId() {
         return id;
     }
