@@ -1,6 +1,7 @@
 package br.ufscar.dc.dsw.sistemamedicoservlets.controllers.crud.medico;
 
 import br.ufscar.dc.dsw.sistemamedicoservlets.exceptions.MedicoNaoExisteException;
+import br.ufscar.dc.dsw.sistemamedicoservlets.exceptions.UsuarioNaoExisteException;
 import br.ufscar.dc.dsw.sistemamedicoservlets.models.Usuario;
 import br.ufscar.dc.dsw.sistemamedicoservlets.services.MedicoService;
 
@@ -26,6 +27,10 @@ public class DeletarMedicoServlet extends HttpServlet {
         catch (MedicoNaoExisteException e) {
             System.out.println("[!] Tentativa de excluir um médico com ID inexistente (ID: " + id + "): " + e.getMessage());
         }
+        catch (UsuarioNaoExisteException e) {
+            System.out.println("[!] Tentativa de excluir um usuário com ID inexistente (ID: " + id + "): " + e.getMessage());
+        }
+
         resp.sendRedirect("/admin/medicos");
     }
 }
