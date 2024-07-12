@@ -49,12 +49,13 @@ public class MedicoService {
         medicoDao.update(m);
     }
 
-    public void deletar(int id) throws MedicoNaoExisteException {
+    public void deletar(int id) throws MedicoNaoExisteException, UsuarioNaoExisteException {
         Medico medicoBanco = medicoDao.findById(id);
 
         if (medicoBanco == null)
             throw new MedicoNaoExisteException("Médico com ID " + id + " não existe");
 
+        usuarioService.deletar(medicoBanco.getUsuario().getId());
         medicoDao.deleteById(id);
         // deletar consultas em cascata
     }
