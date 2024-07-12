@@ -36,13 +36,13 @@ public class UsuarioService {
         usuarioDao.update(u);
     }
 
-    public void excluir(Usuario u) throws UsuarioNaoExisteException {
-        Usuario usuarioBanco = usuarioDao.findById(u.getId());
+    public void deletar(int id) throws UsuarioNaoExisteException {
+        Usuario usuarioBanco = usuarioDao.findById(id);
 
         if (usuarioBanco == null)
-            throw new UsuarioNaoExisteException("Usuário com ID " + u.getId() + " não existe");
+            throw new UsuarioNaoExisteException("Usuário com ID " + id + " não existe");
 
-        usuarioDao.deleteById(u.getId());
+        usuarioDao.deleteById(id);
     }
 
     public Usuario buscarPorId(int id) {

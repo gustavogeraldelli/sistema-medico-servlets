@@ -52,13 +52,13 @@ public class ConsultaService {
         consultaDao.update(c);
     }
 
-    public void deletar(Consulta c) throws ConsultaNaoExisteException {
-        Consulta consultaBanco = consultaDao.findById(c.getId());
+    public void deletar(int id) throws ConsultaNaoExisteException {
+        Consulta consultaBanco = consultaDao.findById(id);
 
         if (consultaBanco == null)
-            throw new ConsultaNaoExisteException("Consulta com ID " + c.getId() + " não existe");
+            throw new ConsultaNaoExisteException("Consulta com ID " + id + " não existe");
 
-        consultaDao.deleteById(c.getId());
+        consultaDao.deleteById(id);
     }
 
     public Consulta buscarPorId(int id) {
