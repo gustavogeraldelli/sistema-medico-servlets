@@ -21,12 +21,15 @@ public class PacienteService {
     }
 
     public void salvar(Paciente p) throws CpfJaExisteException, EmailJaExisteException {
+        usuarioService.salvar(p.getUsuario());
+        Usuario usuarioSalvo = usuarioService.buscarPorEmail(p.getUsuario().getEmail());
+
         Paciente pacienteBanco = pacienteDao.findByCpf(p.getCpf());
 
         if (pacienteBanco != null)
             throw new CpfJaExisteException("Paciente com CPF " + p.getCpf() + " já existe");
 
-        usuarioService.salvar(p.getUsuario());
+        p.setUsuario(usuarioSalvo);
         pacienteDao.insert(p);
     }
 

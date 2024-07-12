@@ -21,12 +21,15 @@ public class MedicoService {
     }
 
     public void salvar(Medico m) throws CrmJaExisteException, EmailJaExisteException {
+        usuarioService.salvar(m.getUsuario());
+        Usuario usuarioSalvo = usuarioService.buscarPorEmail(m.getUsuario().getEmail());
+
         Medico medicoBanco = medicoDao.findByCrm(m.getCrm());
 
         if (medicoBanco != null)
             throw new CrmJaExisteException("Médico com CRM " + m.getCrm() + " já existe");
 
-        usuarioService.salvar(m.getUsuario());
+        m.setUsuario(usuarioSalvo);
         medicoDao.insert(m);
     }
 
