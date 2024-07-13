@@ -16,6 +16,7 @@
         <tr>
             <th>ID</th>
             <th>Usuario</th>
+            <th>Email</th>
             <th>CRM</th>
             <th>Nome</th>
             <th>Especialidade</th>
@@ -27,6 +28,7 @@
             <tr>
                 <td>${medico.getId()}</td>
                 <td>${medico.getUsuario().getId()}</td>
+                <td>${medico.getUsuario().getEmail()}</td>
                 <td>${medico.getCrm()}</td>
                 <td>${medico.getNome()}</td>
                 <td>${medico.getEspecialidade()}</td>

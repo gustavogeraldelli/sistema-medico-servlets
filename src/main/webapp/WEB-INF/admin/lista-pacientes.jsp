@@ -16,6 +16,7 @@
         <tr>
             <th>ID</th>
             <th>Usuario</th>
+            <th>Email</th>
             <th>CPF</th>
             <th>Nome</th>
             <th>Telefone</th>
@@ -29,6 +30,7 @@
             <tr>
                 <td>${paciente.getId()}</td>
                 <td>${paciente.getUsuario().getId()}</td>
+                <td>${paciente.getUsuario().getEmail()}</td>
                 <td>${paciente.getCpf()}</td>
                 <td>${paciente.getNome()}</td>
                 <td>${paciente.getTelefone()}</td>
