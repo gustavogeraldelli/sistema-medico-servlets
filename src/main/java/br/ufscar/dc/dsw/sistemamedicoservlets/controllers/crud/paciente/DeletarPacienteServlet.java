@@ -29,7 +29,7 @@ public class DeletarPacienteServlet extends HttpServlet {
         catch (UsuarioNaoExisteException e) {
             System.out.println("[!] Tentativa de excluir um usuário com ID inexistente (ID: " + id + "): " + e.getMessage());
         }
-        
+
         resp.sendRedirect("/admin/pacientes");
     }
 }
