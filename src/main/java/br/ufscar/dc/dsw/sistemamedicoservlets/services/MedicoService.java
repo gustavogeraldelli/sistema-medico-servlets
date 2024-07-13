@@ -61,7 +61,7 @@ public class MedicoService {
     }
 
     public Medico buscarPorId(int id) {
-        return medicoDao.findByIdUsuario(id);
+        return medicoDao.findById(id);
     }
 
     public Medico buscarPorCrm(String crm) {

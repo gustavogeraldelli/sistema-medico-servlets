@@ -61,7 +61,7 @@ public class PacienteService {
     }
 
     public Paciente buscarPorId(int id) {
-        return pacienteDao.findByIdUsuario(id);
+        return pacienteDao.findById(id);
     }
 
     public Paciente buscarPorCpf(String cpf) {
