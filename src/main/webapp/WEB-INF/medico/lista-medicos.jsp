@@ -37,7 +37,7 @@
                 <td>${medico.getEspecialidade()}</td>
                 <td>
                     <form action="agendar" method="get">
-                        <input type="hidden" name="id" value="${medico.getId()}">
+                        <input type="hidden" name="idMedico" value="${medico.getId()}">
                         <button type="submit">Agendar consulta</button>
                     </form>
                 </td>
