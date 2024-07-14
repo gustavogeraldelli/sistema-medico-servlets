@@ -5,7 +5,9 @@ import br.ufscar.dc.dsw.sistemamedicoservlets.exceptions.EmailJaExisteException;
 import br.ufscar.dc.dsw.sistemamedicoservlets.exceptions.PacienteNaoExisteException;
 import br.ufscar.dc.dsw.sistemamedicoservlets.exceptions.UsuarioNaoExisteException;
 import br.ufscar.dc.dsw.sistemamedicoservlets.models.Paciente;
+import br.ufscar.dc.dsw.sistemamedicoservlets.models.Usuario;
 import br.ufscar.dc.dsw.sistemamedicoservlets.models.enums.Sexo;
+import br.ufscar.dc.dsw.sistemamedicoservlets.models.enums.TipoUsuario;
 import br.ufscar.dc.dsw.sistemamedicoservlets.services.PacienteService;
 
 import javax.servlet.ServletException;
@@ -22,7 +24,19 @@ public class AtualizarPacienteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/admin/form-paciente.jsp").forward(req, resp);
+        Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+
+        if (usuario == null) {
+            System.out.println("[!] Tentativa de entrar em /admin sem autenticação");
+            req.setAttribute("erro", "Você precisa estar autenticado para acessar essa página");
+            req.getRequestDispatcher("/login").forward(req, resp);
+        }
+        else if (usuario.getTipoUsuario() == TipoUsuario.ADMIN)
+            req.getRequestDispatcher("/WEB-INF/admin/form-paciente.jsp").forward(req, resp);
+        else {
+            System.out.println("[!] Tentativa de entrar em /admin sem autorização (ID: " + usuario.getId() + ")");
+            resp.sendRedirect("sem-autorizacao");
+        }
     }
 
     @Override
