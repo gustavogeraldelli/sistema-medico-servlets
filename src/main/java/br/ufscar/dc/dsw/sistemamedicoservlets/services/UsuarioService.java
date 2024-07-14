@@ -30,7 +30,7 @@ public class UsuarioService {
 
         usuarioBanco = usuarioDao.findByEmail(u.getEmail());
 
-        if (usuarioBanco != null)
+        if (usuarioBanco != null && usuarioBanco.getId() != u.getId())
             throw new EmailJaExisteException("Usuário com email " + u.getEmail() + " já existe");
 
         usuarioDao.update(u);

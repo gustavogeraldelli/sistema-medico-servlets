@@ -42,7 +42,7 @@ public class PacienteService {
 
         pacienteBanco = pacienteDao.findByCpf(p.getCpf());
 
-        if (pacienteBanco != null)
+        if (pacienteBanco != null && pacienteBanco.getId() != p.getId())
             throw new CpfJaExisteException("Paciente com CPF " + p.getCpf() + " já existe");
 
         usuarioService.atualizar(p.getUsuario());

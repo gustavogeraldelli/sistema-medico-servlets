@@ -42,7 +42,7 @@ public class MedicoService {
 
         medicoBanco = medicoDao.findByCrm(m.getCrm());
 
-        if (medicoBanco != null)
+        if (medicoBanco != null && medicoBanco.getId() != m.getId())
             throw new CrmJaExisteException("Médico com CRM " + m.getCrm() + " já existe");
 
         usuarioService.atualizar(m.getUsuario());
