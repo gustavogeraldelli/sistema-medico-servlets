@@ -41,7 +41,7 @@
                         <input type="hidden" name="id" value="${paciente.getId()}">
                         <button type="submit">Atualizar</button>
                     </form>
-                    <form action="pacientes/criar" method="post">
+                    <form action="pacientes/deletar" method="post">
                         <input type="hidden" name="id" value="${paciente.getId()}">
                         <button type="submit">Deletar</button>
                     </form>
