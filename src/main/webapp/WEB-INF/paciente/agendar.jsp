@@ -5,6 +5,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Agendar consulta</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script>
         function horarios() {
             var select = document.getElementsByName("hora")[0]
@@ -24,26 +25,29 @@
         window.onload = horarios;
     </script>
 </head>
-<body>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center">
 
-    <h1>Agendar consulta com ${nomeMedico}</h1>
-    <a href="${pageContext.request.contextPath}/logout"><button>Logout</button></a>
+    <h1 class="text-3xl font-bold mb-6">Agendar consulta com ${nomeMedico}</h1>
 
+    <%@ include file="../componentes/btn-login-logout.jsp" %>
 
-    <p style="color:red;">
-        <%= request.getAttribute("erro") != null ?
-                request.getAttribute("erro") : "" %>
+    <p class="mb-4 text-red-500">
+        ${erro}
     </p>
 
-    <form action="agendar" method="post">
+    <form action="agendar" method="post" class="mb-4">
         <input type="hidden" name="idMedico" value="${param.idMedico}"/>
-        Data: <input type="date" name="data" placeholder="Data da consulta" />
-        Horário: <select name="hora"></select>
+        <label class="block mb-2">Data:</label>
+        <input type="date" name="data" placeholder="Data da consulta" class="bg-gray-800 text-white border border-gray-600 rounded py-2 px-4 mb-2">
 
-        <button type="submit">Confirmar</button>
+        <label class="block mb-2">Horário:</label>
+        <select name="hora" class="bg-gray-800 text-white border border-gray-600 rounded py-2 px-4 mb-4"></select>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Confirmar</button>
     </form>
 
-    <a href="${pageContext.request.contextPath}/medicos"><button>Voltar</button></a>
+    <a href="${pageContext.request.contextPath}/medicos"
+       class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-4">Voltar</a>
 
 </body>
 </html>
